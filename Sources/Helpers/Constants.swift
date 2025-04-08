@@ -10,10 +10,10 @@ import Foundation
 /// A struct containing various constant values used throughout the CoachMarkView implementation.
 ///
 /// These constants help maintain consistency and reduce magic numbers across the codebase.
-struct Constants {
+public struct Constants {
     
     /// The default duration for automatic transitions, in seconds.
-    static let defaultAutoTransitionDuration: Double = 2.0
+    public static let defaultAutoTransitionDuration: Double = 2.0
     
     /// The screen size used for the highlight view overlay, in points.
     static let highlightViewOverlayScreenSize: CGFloat = 500

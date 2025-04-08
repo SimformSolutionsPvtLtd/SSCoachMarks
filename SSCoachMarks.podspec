@@ -2,6 +2,7 @@
 Pod::Spec.new do |s|
   s.name 		= 'SSCoachMarks'
   s.version 		= '1.0.0'
+  s.summary		= 'SSCoachMarks SDK for SwiftUI enables customizable view highlighting with guided navigation, button styling, background customization, and timed transitions—perfect for onboarding and tutorials.'
   s.platform 		= :ios
   s.swift_versions 	= '5.9'
   s.description = <<-DESC

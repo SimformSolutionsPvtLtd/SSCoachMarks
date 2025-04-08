@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: CoachMarkView
-struct CoachMarkView: ViewModifier {
+public struct CoachMarkView: ViewModifier {
     
     // MARK: - Variables
     
@@ -71,8 +71,45 @@ struct CoachMarkView: ViewModifier {
     
     /// The height of the text description within the coach mark, used for layout purposes.
     @State private var descriptionTextHeight: CGFloat = 0
+    
+    /// Initializes a new `CoachMarkView` modifier with customizable behavior and appearance.
+    ///
+    /// - Parameters:
+    ///   - isShowCoachMark: A Boolean value indicating whether the coach mark should be initially shown. Defaults to `true`.
+    ///   - isAutoTransition: A Boolean value indicating whether transitions between coach marks should occur automatically. Defaults to `false`.
+    ///   - autoTransitionDuration: The duration (in seconds) for each automatic transition. Defaults to `Constants.defaultAutoTransitionDuration`.
+    ///   - coachMarkManager: An instance of `SSCoachMarkManager` that provides configuration for the coach mark. Defaults to a new instance.
+    ///   - buttonEventsCoordinator: An instance of `ButtonEventsCoordinator` to handle button event coordination. Defaults to a new instance.
+    ///   - skipCoachMarkButton: An optional custom SwiftUI view to replace the default "Skip" button.
+    ///   - nextButtonContent: An optional custom SwiftUI view to replace the default "Next" button.
+    ///   - backButtonContent: An optional custom SwiftUI view to replace the default "Back" button.
+    ///   - doneButtonContent: An optional custom SwiftUI view to replace the default "Done" button.
+    ///   - onCoachMarkFinished: A closure executed when the coach mark sequence is completed. Defaults to an empty closure.
+    public init(
+        isShowCoachMark: Bool = true,
+        isAutoTransition: Bool = false,
+        autoTransitionDuration: Double = Constants.defaultAutoTransitionDuration,
+        coachMarkManager: SSCoachMarkManager = SSCoachMarkManager(),
+        buttonEventsCoordinator: ButtonEventsCoordinator = ButtonEventsCoordinator(),
+        skipCoachMarkButton: AnyView? = nil,
+        nextButtonContent: AnyView? = nil,
+        backButtonContent: AnyView? = nil,
+        doneButtonContent: AnyView? = nil,
+        onCoachMarkFinished: @escaping () -> () = {}
+    ) {
+        self.isShowCoachMark = isShowCoachMark
+        self.isAutoTransition = isAutoTransition
+        self.autoTransitionDuration = autoTransitionDuration
+        self.coachMarkManager = coachMarkManager
+        self.buttonEventsCoordinator = buttonEventsCoordinator
+        self.skipCoachMarkButton = skipCoachMarkButton
+        self.nextButtonContent = nextButtonContent
+        self.backButtonContent = backButtonContent
+        self.doneButtonContent = doneButtonContent
+        self.onCoachMarkFinished = onCoachMarkFinished
+    }
 
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .onPreferenceChange(HighlightAnchorKey.self) { value in
                 highlightOrder = Array(value.keys).sorted()

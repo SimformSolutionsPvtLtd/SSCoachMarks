@@ -10,16 +10,11 @@ import Foundation
 //MARK: - SSCoachMarkManager
 /// Manages the configuration and behaviour of CoachMark components.
 /// This class provides direct access to the configuration and facilitates the setup and customisation of CoachMark views.
-final class SSCoachMarkManager {
+final public class SSCoachMarkManager {
     
     /// The configuration used to style and control the behaviour of the CoachMark.
-    public var configuration: SSCoachMarkConfiguration
+    public var configuration = SSCoachMarkConfiguration()
     
-    /// Initializes a new `SSCoachMarkManager` instance with the specified configuration.
-    ///
-    /// - Parameter configuration: An instance of `SSCoachMarkConfiguration` that defines the appearance and behaviour of the CoachMark.
-    ///   If no configuration is provided, a default `SSCoachMarkConfiguration` instance is used.
-    public init(configuration: SSCoachMarkConfiguration = SSCoachMarkConfiguration()) {
-        self.configuration = configuration
-    }
+    /// A public no-argument initializer that allows external modules to create an instance of the type.
+    public init() { }
 }
