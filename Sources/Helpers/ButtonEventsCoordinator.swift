@@ -9,8 +9,11 @@ import SwiftUI
 import Combine
 
 /// A coordinator that manages button event triggers and publishes events for `next`, `back`, `done`, and `skip` actions.
-final class ButtonEventsCoordinator {
+final public class ButtonEventsCoordinator {
 
+    /// A public no-argument initializer that allows external modules to create an instance of the type.
+    public init() { }
+    
     /// Defines the type of button events supported.
     enum EventType {
         case next, back, done, skip
